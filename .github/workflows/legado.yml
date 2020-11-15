@@ -16,12 +16,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 14
-
-    - name: install git
-      run: |
-        sudo apt-get update
-        sudo apt-get -y install git
-          
+     
     - name: check latest tag
       shell: bash
       env:
@@ -94,11 +89,6 @@ jobs:
       with:
         java-version: 14
 
-    - name: install git
-      run: |
-        sudo apt-get update
-        sudo apt-get -y install git
-
     - name: set env
       shell: bash
       env:
@@ -111,6 +101,7 @@ jobs:
         REPO_OWNER: ${{ github.repository_owner }}
         REPO_ACTOR: ${{ github.actor }}
         SECRETS_TAG: ${{ secrets.TAG }}
+        SECRETS_LAUNCH_NAME: ${{ secrets.LAUNCH_NAME }}
       run: source $GITHUB_WORKSPACE/action_setenv.sh
       
     - name: clone code
